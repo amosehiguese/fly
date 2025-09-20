@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+/node_modules
+/.pnp
+package-lock.json
+
+logs/
+*.log
+
+
+# Environment variables
+.env
+server/temp/*
+!server/temp/.gitkeep

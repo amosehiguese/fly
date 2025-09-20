@@ -1,0 +1,24 @@
+/* styles/chat.css */
+.cs-message__content {
+    background-color: #f3f4f6 !important;
+  }
+  
+  .cs-message--outgoing .cs-message__content {
+    background-color: red !important;
+    color: white !important;
+  }
+  
+  .cs-chat-container {
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .cs-conversation-header {
+    background-color: #f9fafb;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  
+  .cs-message-input {
+    border-top: 1px solid #e5e7eb;
+  }

@@ -1,0 +1,304 @@
+POST http://localhost:3000/api/payment/create-payment-link
+Content-Type: application/json
+
+{
+    "bid_id": "123",
+    "customer_email": "customer@example.com"
+}
+
+POST http://localhost:3000/api/payment/create-payment-link
+
+#####
+#  @name supplier_login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "identifier": "exclusiveadxe@gmail.com",
+    "password": "10434"
+}
+
+###
+
+# @name admin_login
+POST http://localhost:3000/api/admin-login
+Content-Type: application/json
+
+{
+    "username": "adminuser",
+    "password": "securepassword123"
+}
+#####
+
+# @name customer_login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "identifier": "michael@example.com",
+    "password": "+46745678901"
+}
+
+#####
+
+@supplier_token = {{supplier_login.response.body.token}}
+@admin_token = {{admin_login.response.body.token}}
+
+@customer_token = {{customer_login.response.body.token}}
+
+
+#####
+
+POST http://localhost:3000/api/admins/auction/toggle
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+    "auction_enabled": true
+}
+
+#####
+
+GET http://localhost:3000/api/admins/quotation-bid/moving_cleaning/3
+Authorization: Bearer {{admin_token}}
+
+#####
+
+
+GET http://localhost:3000/api/dispute-chat/supplier-disputes
+Authorization: Bearer {{supplier_token}}
+
+
+#####
+
+GET http://localhost:3000/api/suppliers/disputes
+Authorization: Bearer {{supplier_token}}
+
+####
+
+GET http://localhost:3000/api/dispute-chat/supplier-chat/3
+Authorization: Bearer {{supplier_token}}
+
+####
+
+GET http://localhost:3000/api/dispute-chat/admin-disputes/customer
+Authorization: Bearer {{admin_token}}
+
+####
+
+GET http://localhost:3000/api/conversation/admin/conversations
+Authorization: Bearer {{admin_token}}
+
+####
+
+GET http://localhost:3000/api/conversation/admin/chat/1
+Authorization: Bearer {{admin_token}}
+
+####
+
+GET http://localhost:3000/api/dispute-chat/admin-chat/customer-supplier
+Authorization: Bearer {{admin_token}}
+
+####
+
+GET http://localhost:3000/api/suppliers/dashboard
+Authorization: Bearer {{supplier_token}}
+
+#####
+
+GET http://localhost:3000/api/suppliers/earnings
+Authorization: Bearer {{supplier_token}}
+
+######
+
+
+GET http://localhost:3000/api/admins/quotations/secrecy_move/1
+Authorization: Bearer {{admin_token}}
+
+#####
+
+POST http://localhost:3000/api/admins/set-auction
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+    "moving_cost_percentage": 15,
+    "additional_services_percentage": 10,
+    "cost_of_truck": 1000,
+    "auction_duration_minutes": 120
+}
+
+#####
+
+
+GET http://localhost:3000/api/dispute-chat/admin-disputes/supplier
+Authorization: Bearer {{admin_token}}
+
+
+####
+
+GET http://localhost:3000/api/customers/orders/BID-20250304-939
+Authorization: Bearer {{customer_token}}
+
+####
+
+GET http://localhost:3000/api/customers/checkout/BID-20250304-939
+Authorization: Bearer {{customer_token}}
+
+
+#####
+
+POST http://localhost:3000/api/payment/payment-sheet
+Content-Type: application/json
+Authorization: Bearer {{customer_token}}
+
+
+{"bid_id": 6,
+"customer_email": "michael@example.com"}
+
+
+#####
+
+GET http://localhost:3000/api/suppliers/my-bids
+Authorization: Bearer {{supplier_token}}
+
+
+#####
+
+GET http://localhost:3000/api/reviews/get-reviews
+Authorization: Bearer {{customer_token}}
+
+######
+
+
+GET http://localhost:3000/api/suppliers/disputes/3
+Authorization: Bearer {{supplier_token}}
+
+#####
+
+
+GET http://localhost:3000/api/disputes/3
+Authorization: Bearer {{supplier_token}}
+
+####
+
+GET http://localhost:3000/api/conversation/customer/conversations
+Authorization: Bearer {{customer_token}}
+
+#####
+
+GET http://localhost:3000/api/suppliers/earnings
+Authorization: Bearer {{supplier_token}}
+
+
+######
+
+GET http://localhost:3000/api/suppliers/7/withdrawal-amount
+Authorization: Bearer {{supplier_token}}
+
+######
+
+GET http://localhost:3000/api/suppliers/withdrawal-history
+Authorization: Bearer {{supplier_token}}
+
+#####
+
+PATCH  http://localhost:3000/api/notifications/read/
+Content-Type: application/json
+Authorization: Bearer {{supplier_token}}
+
+{
+    "notification_ids": [1, 2, 3]
+}
+
+#####
+
+GET http://localhost:3000/api/admins/suppliers/3
+Authorization: Bearer {{admin_token}}
+
+#####
+
+
+
+POST http://localhost:3000/api/conversation/initiate-chat
+Content-Type: application/json
+Authorization: Bearer {{customer_token}}
+
+{
+    "supplier_id": 1,
+    "reason": "Hey, I have a question about your service"
+}
+
+####
+
+POST http://localhost:3000/api/conversation/customer/send-message
+Content-Type: application/json
+Authorization: Bearer {{customer_token}}
+
+{
+    "conversation_id": 1,
+    "message": "Hello, how are you?"
+}
+#######
+
+GET http://localhost:3000/api/conversation/customer/chat/1
+Authorization: Bearer {{customer_token}}
+
+#######
+
+GET http://localhost:3000/api/conversation/customer/chat/1
+Authorization: Bearer {{customer_token}}
+
+#####
+
+GET http://localhost:3000/api/dispute-chat/customer/3/messages
+Authorization: Bearer {{customer_token}}
+
+
+#####
+
+GET http://localhost:3000/api/conversation/customer/conversations
+Authorization: Bearer {{customer_token}}
+
+######
+
+POST http://localhost:3000/api/conversation/supplier/send-message
+Content-Type: application/json
+Authorization: Bearer {{supplier_token}}
+
+{
+    "conversation_id": 1,
+    "message": "Hello, how are you?"
+}
+
+###
+
+GET http://localhost:3000/api/conversation/supplier/chat/1
+Authorization: Bearer {{supplier_token}}
+
+###
+
+GET http://localhost:3000/api/conversation/supplier/conversations
+Authorization: Bearer {{supplier_token}}
+
+###
+
+GET http://localhost:3000/api/admins/
+
+#####
+
+GET http://localhost/api/suppliers/marketplace?page=1
+
+
+#####
+
+
+POST https://api.flyttman.se/api/webhook/stripe
+
+
+#####
+
+GET http://localhost:3000/api/checkout/details/BID-20250504-939
+Authorization: Bearer {{admin_token}}
+
+

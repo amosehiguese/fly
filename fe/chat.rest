@@ -1,0 +1,102 @@
+#  @name supplier_login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "identifier": "exclusiveadxe@gmail.com",
+    "password": "10434"
+}
+
+###
+
+# @name admin_login
+POST http://localhost:3000/api/admin-login
+Content-Type: application/json
+
+{
+    "username": "adminuser",
+    "password": "securepassword123"
+}
+#####
+
+# @name customer_login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "identifier": "michael@example.com",
+    "password": "+46745678901"
+}
+
+#####
+
+@supplier_token = {{supplier_login.response.body.token}}
+@admin_token = {{admin_login.response.body.token}}
+
+@customer_token = {{customer_login.response.body.token}}
+
+
+#####
+
+### Get all conversations (Customer)
+GET http://localhost:3000/api/conversation/conversations
+Authorization: Bearer {{customer_token}}
+
+####
+
+### Get all conversations (Supplier)
+GET http://localhost:3000/api/conversation/conversations
+Authorization: Bearer {{supplier_token}}
+
+### Get messages for a specific conversation (Customer/Supplier)
+GET http://localhost:3000/api/conversation/messages/1
+Authorization: Bearer {{customer_token}}
+
+### Get all conversations (Admin)
+GET http://localhost:3000/api/conversation/admin/conversations
+Authorization: Bearer {{admin_token}}
+
+### Get messages for a specific conversation (Admin)
+GET http://localhost:3000/api/conversation/admin/messages/3
+Authorization: Bearer {{admin_token}}
+
+### Get conversation by ID (Customer/Supplier)
+GET http://localhost:3000/api/conversation/conversation/2
+Authorization: Bearer {{customer_token}}
+
+### Get conversation by ID (Admin)
+GET http://localhost:3000/api/conversation/admin/conversation/2
+Authorization: Bearer {{admin_token}}
+
+### Get unread conversations count (Customer/Supplier)
+GET http://localhost:3000/api/conversation/unread-count
+Authorization: Bearer {{customer_token}}
+
+### Get unread conversations count (Admin)
+GET http://localhost:3000/api/conversation/admin/unread-count
+Authorization: Bearer {{admin_token}}
+
+### Mark messages as read (Customer/Supplier)
+POST http://localhost:3000/api/conversation/mark-read
+Content-Type: application/json
+Authorization: Bearer {{customer_token}}
+
+{
+  "chat_id": 1,
+  "last_read_message_id": 4
+}
+
+### Mark messages as read (Admin)
+POST http://localhost:3000/api/conversation/admin/mark-read
+Content-Type: application/json
+Authorization: Bearer {{admin_token}}
+
+{
+  "chat_id": 2,
+  "last_read_message_id": 5
+}
+
+### Get conversation statistics (Admin only)
+GET http://localhost:3000/api/conversation/admin/statistics
+Authorization: Bearer {{admin_token}}
+

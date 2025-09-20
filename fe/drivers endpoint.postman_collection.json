@@ -1,0 +1,1746 @@
+{
+	"info": {
+		"_postman_id": "2db5f70b-73a3-45c4-b67f-65d1a109b0db",
+		"name": "drivers endpoint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39313251",
+		"_collection_link": "https://galactic-trinity-196211.postman.co/workspace/Spectrum~26670d67-03cf-4762-9f8b-8b00f814d870/collection/32197384-2db5f70b-73a3-45c4-b67f-65d1a109b0db?action=share&source=collection_link&creator=39313251"
+	},
+	"item": [
+		{
+			"name": "Drivers Register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMwMDE5NywiZXhwIjoxNzQ4OTA0OTk3fQ.H5gT4hMxXSzg9mSNt09rYIx4znJl5mAYSIs0BywYOZk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fullName",
+							"value": "Pelumi Adeyemo",
+							"type": "text"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "09051750438",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "xclusivetvng@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "licenseNumber",
+							"value": "123467821723536",
+							"type": "text"
+						},
+						{
+							"key": "licenseExpDate",
+							"value": "2026-12-30",
+							"type": "text"
+						},
+						{
+							"key": "licenseType",
+							"value": "C",
+							"type": "text"
+						},
+						{
+							"key": "vehicleType",
+							"value": "car",
+							"type": "text"
+						},
+						{
+							"key": "plateNumber",
+							"value": "ABA-345CF",
+							"type": "text"
+						},
+						{
+							"key": "vehicleRegDoc",
+							"type": "file",
+							"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+						},
+						{
+							"key": "vehicleImage",
+							"type": "file",
+							"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+						},
+						{
+							"key": "licenseImage",
+							"type": "file",
+							"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/drivers/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"drivers",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Drivers Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "Adeyemo Ayomide",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "07030571854",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "exclusiveadxe@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "licenseNumber",
+									"value": "123467821723536",
+									"type": "text"
+								},
+								{
+									"key": "licenseExpDate",
+									"value": "2026-12-30",
+									"type": "text"
+								},
+								{
+									"key": "licenseType",
+									"value": "C",
+									"type": "text"
+								},
+								{
+									"key": "vehicleType",
+									"value": "truck",
+									"type": "text"
+								},
+								{
+									"key": "plateNumber",
+									"value": "ABA-345C",
+									"type": "text"
+								},
+								{
+									"key": "vehicleRegDoc",
+									"type": "file",
+									"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+								},
+								{
+									"key": "vehicleImage",
+									"type": "file",
+									"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+								},
+								{
+									"key": "licenseImage",
+									"type": "file",
+									"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/drivers/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"drivers",
+								"register"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "124"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7c-hrCfZHqmLP3pbqL3qcaRR1+nBpQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 20:56:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Driver with this email already exists\",\n    \"messageSv\": \"Förare med denna e-postadress finns redan\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Driver's login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"xclusivetvng@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/driver-login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"driver-login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "driver's login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"exclusiveadxe@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/driver-login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"driver-login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "449"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c1-vo1vmEB1HrtBodRIeOLWhsqRK2k\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 23:01:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login successful!\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJBZGV5ZW1vIEF5b21pZGUiLCJlbWFpbCI6ImV4Y2x1c2l2ZWFkeGVAZ21haWwuY29tIiwicGhvbmVfbnVtYmVyIjoiMDcwMzA1NzE4NTQiLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzQ4MzAwNDg4LCJleHAiOjE3NDg5MDUyODh9.6c5R6cbQXS2gF8YdiHA3hsr88GYwOgcqW8ZrDtqmEi0\",\n    \"driver\": {\n        \"id\": 1,\n        \"fullname\": \"Adeyemo Ayomide\",\n        \"email\": \"exclusiveadxe@gmail.com\",\n        \"phone_number\": \"07030571854\",\n        \"role\": \"driver\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Suppliers getting all his registered driver details ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMzODY3OSwiZXhwIjoxNzQ4OTQzNDc5fQ.1jUs-cdFr1QbpKZIiv29zDbMH7hCiSnt7tan0ZgLFd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/suppliers/drivers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"suppliers",
+						"drivers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Suppliers getting all his registered driver details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/suppliers/drivers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"suppliers",
+								"drivers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "722"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d2-hSHQGM5/7DNlf3m39tYsJ274Xek\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 09:38:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"drivers\": [\n            {\n                \"id\": 3,\n                \"full_name\": \"Pelumi Adeyemo\",\n                \"email\": \"xclusivetvng@gmail.com\",\n                \"phone_number\": \"09051750438\",\n                \"license_type\": \"C\",\n                \"vehicle_type\": \"car\",\n                \"plate_number\": \"ABA-345CF\",\n                \"license_exp_date\": \"2026-12-29T23:00:00.000Z\",\n                \"is_active\": 1,\n                \"is_verified\": 1,\n                \"created_at\": \"2025-05-26T22:58:50.000Z\"\n            },\n            {\n                \"id\": 1,\n                \"full_name\": \"Adeyemo Ayomide\",\n                \"email\": \"exclusiveadxe@gmail.com\",\n                \"phone_number\": \"07030571854\",\n                \"license_type\": \"C\",\n                \"vehicle_type\": \"truck\",\n                \"plate_number\": \"ABA-345C\",\n                \"license_exp_date\": \"2026-12-29T23:00:00.000Z\",\n                \"is_active\": 1,\n                \"is_verified\": 1,\n                \"created_at\": \"2025-05-26T20:55:49.000Z\"\n            }\n        ],\n        \"pagination\": {\n            \"currentPage\": 1,\n            \"totalPages\": 1,\n            \"totalDrivers\": 2,\n            \"perPage\": 10,\n            \"hasNextPage\": false,\n            \"hasPrevPage\": false\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "login details suppliers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identifier\": \"exclusiveadxe@gmail.com\",\r\n    \"password\": \"10434\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login details suppliers",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifier\": \"exclusiveadxe@gmail.com\",\r\n    \"password\": \"10434\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "518"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"206-QtR/CWC0kvMKhuZbBcMpVnfmb8k\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 09:37:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login successful!\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMzODY3OSwiZXhwIjoxNzQ4OTQzNDc5fQ.1jUs-cdFr1QbpKZIiv29zDbMH7hCiSnt7tan0ZgLFd8\",\n    \"user\": {\n        \"id\": 2,\n        \"email\": \"exclusiveadxe@gmail.com\",\n        \"phone_number\": \"07030571854\",\n        \"password\": \"$2a$10$.9kr4/rKjqeQWqf6vyPgO.687ugHQB8uCmKsN0hSNDlLag1DxJeMO\",\n        \"fullname\": null,\n        \"role\": \"supplier\",\n        \"reg_status\": \"active\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Supplier getting drivers by drivers id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMzODY3OSwiZXhwIjoxNzQ4OTQzNDc5fQ.1jUs-cdFr1QbpKZIiv29zDbMH7hCiSnt7tan0ZgLFd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/suppliers/drivers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"suppliers",
+						"drivers",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Supplier getting drivers by drivers id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/suppliers/drivers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"suppliers",
+								"drivers",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "309"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"135-zYRGJftY00YYro5gdfItx7zWE0I\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 09:49:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"full_name\": \"Adeyemo Ayomide\",\n        \"email\": \"exclusiveadxe@gmail.com\",\n        \"phone_number\": \"07030571854\",\n        \"license_type\": \"C\",\n        \"vehicle_type\": \"truck\",\n        \"plate_number\": \"ABA-345C\",\n        \"license_exp_date\": \"2026-12-29T23:00:00.000Z\",\n        \"is_active\": 1,\n        \"is_verified\": 1,\n        \"created_at\": \"2025-05-26T20:55:49.000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Supplier assigning task to a driver",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMzODY3OSwiZXhwIjoxNzQ4OTQzNDc5fQ.1jUs-cdFr1QbpKZIiv29zDbMH7hCiSnt7tan0ZgLFd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/suppliers/drivers/BID-20250331-511/3/assign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"suppliers",
+						"drivers",
+						"BID-20250331-511",
+						"3",
+						"assign"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Supplier assigning task to a driver",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/suppliers/drivers/BID-20250331-511/3/assign",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"suppliers",
+								"drivers",
+								"BID-20250331-511",
+								"3",
+								"assign"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "124"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7c-2cAAwySrWp75wtFuxJ3gfdC+t7E\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 11:39:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Driver successfully assigned to job\",\n    \"messageSv\": \"Föraren har tilldelats jobbet framgångsrikt\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Driver getting details about an order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hbWUiOiJQZWx1bWkgQWRleWVtbyIsImVtYWlsIjoieGNsdXNpdmV0dm5nQGdtYWlsLmNvbSIsInBob25lX251bWJlciI6IjA5MDUxNzUwNDM4Iiwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc0ODM1MDQxNywiZXhwIjoxNzQ4OTU1MjE3fQ.I5mNrPKfUM4Qxpnkc-aASv4zv6twxHEj9rikO90jejY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/drivers/order/BID-20250331-511",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"drivers",
+						"order",
+						"BID-20250331-511"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Driver getting details about an order",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/drivers/order/BID-20250331-511",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"drivers",
+								"order",
+								"BID-20250331-511"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1036"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"40c-3PyTpQ8sBKKfCDZf2ezmetk80Zc\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 12:53:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Order and quotation details fetched successfully\",\n    \"messageSv\": \"Order- och offertdetaljer hämtades framgångsrikt\",\n    \"data\": {\n        \"quotation\": {\n            \"id\": 1,\n            \"service_type\": \"Company Relocation\",\n            \"pickup_address\": \"34 Green Avenue, Helsingborg\",\n            \"delivery_address\": \"Storage Facility, Malm├╢\",\n            \"date\": \"2025-07-11T23:00:00.000Z\",\n            \"latest_date\": \"2025-07-19T23:00:00.000Z\",\n            \"move_type\": \"House\",\n            \"services\": \"\\\"[\\\\\\\"Furniture removal\\\\\\\", \\\\\\\"Cleaning\\\\\\\", \\\\\\\"Donation handling\\\\\\\"]\\\"\",\n            \"additional_services\": \"\\\"[\\\\\\\"Packing\\\\\\\", \\\\\\\"IT equipment handling\\\\\\\"]\\\"\",\n            \"more_information\": \"Ensure safe handling of IT equipment and files.\",\n            \"company_name\": null,\n            \"name\": \"Emily\",\n            \"ssn\": \"Carter\",\n            \"email\": \"emily@example.com\",\n            \"phone\": \"+46732109876\",\n            \"file_paths\": \"[]\",\n            \"status\": \"awarded\",\n            \"created_at\": \"2025-03-03T21:33:58.000Z\",\n            \"distance\": \"0.00\"\n        },\n        \"supplier\": {\n            \"fullname\": null,\n            \"company_name\": \"Exclusive ways Ltd\",\n            \"phone\": \"07030571854\",\n            \"email\": \"exclusiveadxe@gmail.com\"\n        },\n        \"orderStatus\": {\n            \"orderId\": \"BID-20250331-511\",\n            \"quotationType\": \"company_relocation\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Driver getting all tasks assigned to him",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hbWUiOiJQZWx1bWkgQWRleWVtbyIsImVtYWlsIjoieGNsdXNpdmV0dm5nQGdtYWlsLmNvbSIsInBob25lX251bWJlciI6IjA5MDUxNzUwNDM4Iiwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc0ODM1MDQxNywiZXhwIjoxNzQ4OTU1MjE3fQ.I5mNrPKfUM4Qxpnkc-aASv4zv6twxHEj9rikO90jejY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/drivers/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"drivers",
+						"orders"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Driver getting all tasks assigned to him",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/drivers/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"drivers",
+								"orders"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1112"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"458-GyVJzXbM3Ldv1V1/KcLfRyo47FE\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 13:02:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Orders fetched successfully\",\n    \"messageSv\": \"Ordrar hämtades framgångsrikt\",\n    \"data\": {\n        \"orders\": [\n            {\n                \"order_id\": \"BID-20250331-511\",\n                \"id\": 1,\n                \"service_type\": \"Company Relocation\",\n                \"pickup_address\": \"34 Green Avenue, Helsingborg\",\n                \"delivery_address\": \"Storage Facility, Malm├╢\",\n                \"date\": \"2025-07-11T23:00:00.000Z\",\n                \"latest_date\": \"2025-07-19T23:00:00.000Z\",\n                \"move_type\": \"House\",\n                \"services\": \"\\\"[\\\\\\\"Furniture removal\\\\\\\", \\\\\\\"Cleaning\\\\\\\", \\\\\\\"Donation handling\\\\\\\"]\\\"\",\n                \"additional_services\": \"\\\"[\\\\\\\"Packing\\\\\\\", \\\\\\\"IT equipment handling\\\\\\\"]\\\"\",\n                \"more_information\": \"Ensure safe handling of IT equipment and files.\",\n                \"company_name\": null,\n                \"name\": \"Emily\",\n                \"ssn\": \"Carter\",\n                \"email\": \"emily@example.com\",\n                \"phone\": \"+46732109876\",\n                \"file_paths\": \"[]\",\n                \"status\": \"awarded\",\n                \"created_at\": \"2025-03-03T21:33:58.000Z\",\n                \"distance\": \"0.00\",\n                \"order_status\": \"accepted\",\n                \"supplier_name\": \"Exclusive ways Ltd\",\n                \"supplier_phone\": \"07030571854\",\n                \"supplier_email\": \"exclusiveadxe@gmail.com\",\n                \"quotation_type\": \"company_relocation\"\n            }\n        ],\n        \"pagination\": {\n            \"currentPage\": 1,\n            \"totalPages\": 1,\n            \"perPage\": 10,\n            \"totalOrders\": 1,\n            \"hasNextPage\": false,\n            \"hasPrevPage\": false\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "suppliers getting the drivers details (everything needed) by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMzODY3OSwiZXhwIjoxNzQ4OTQzNDc5fQ.1jUs-cdFr1QbpKZIiv29zDbMH7hCiSnt7tan0ZgLFd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/suppliers/drivers/ratings/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"suppliers",
+						"drivers",
+						"ratings",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "suppliers getting the drivers details (everything needed) by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/suppliers/drivers/ratings/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"suppliers",
+								"drivers",
+								"ratings",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "562"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"232-l8KzvZNY9gqNG0mFnXNkKPI6uF0\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 May 2025 18:44:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Drivers details retrieved successfully\",\n    \"messageSv\": \"Förares detaljer hämtades framgångsrikt\",\n    \"driver\": {\n        \"id\": 1,\n        \"full_name\": \"Pelumi Adeyemo\",\n        \"phone_number\": \"09051750438\",\n        \"email\": \"xclusivetvng@gmail.com\",\n        \"license_number\": \"123467821723536\",\n        \"license_exp_date\": \"2026-12-29T23:00:00.000Z\",\n        \"license_type\": \"C\",\n        \"vehicle_type\": \"car\",\n        \"plate_number\": \"ABA-345CF\",\n        \"created_at\": \"2025-05-28T11:19:00.000Z\"\n    },\n    \"orders\": [],\n    \"totalOrders\": 0,\n    \"completedOrders\": 0,\n    \"pendingOrders\": 0,\n    \"acceptedOrders\": 0,\n    \"ratings\": {\n        \"total_reviews\": 3,\n        \"average_rating\": \"2.3\"\n    },\n    \"totalDisputes\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Suppliers getting all the drivers under him",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMzODY3OSwiZXhwIjoxNzQ4OTQzNDc5fQ.1jUs-cdFr1QbpKZIiv29zDbMH7hCiSnt7tan0ZgLFd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/suppliers/drivers/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"suppliers",
+						"drivers",
+						"all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Suppliers getting all the drivers under him",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/suppliers/drivers/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"suppliers",
+								"drivers",
+								"all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "719"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2cf-wls1X19TZ0/t+YIsytGKSPKq64M\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 May 2025 18:58:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Drivers details retrieved successfully\",\n    \"messageSv\": \"Förardetaljer hämtades framgångsrikt\",\n    \"data\": {\n        \"total_drivers\": 1,\n        \"drivers\": [\n            {\n                \"id\": 1,\n                \"full_name\": \"Pelumi Adeyemo\",\n                \"phone_number\": \"09051750438\",\n                \"email\": \"xclusivetvng@gmail.com\",\n                \"license_number\": \"123467821723536\",\n                \"license_exp_date\": \"2026-12-29T23:00:00.000Z\",\n                \"license_type\": \"C\",\n                \"vehicle_type\": \"car\",\n                \"plate_number\": \"ABA-345CF\",\n                \"created_at\": \"2025-05-28T11:19:00.000Z\",\n                \"total_assignments\": 1,\n                \"completed_orders\": 0,\n                \"pending_orders\": 1,\n                \"total_disputes\": 0,\n                \"total_reviews\": 3,\n                \"average_rating\": \"2.3\",\n                \"statistics\": {\n                    \"total_assignments\": 1,\n                    \"completed_orders\": 0,\n                    \"pending_orders\": 1,\n                    \"total_disputes\": 0,\n                    \"ratings\": {\n                        \"total_reviews\": 3,\n                        \"average_rating\": \"2.3\"\n                    }\n                }\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Supplier getting his assigned jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOm51bGwsImVtYWlsIjoiZXhjbHVzaXZlYWR4ZUBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzAzMDU3MTg1NCIsInJvbGUiOiJzdXBwbGllciIsImlhdCI6MTc0ODMzODY3OSwiZXhwIjoxNzQ4OTQzNDc5fQ.1jUs-cdFr1QbpKZIiv29zDbMH7hCiSnt7tan0ZgLFd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/suppliers/accepted-jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"suppliers",
+						"accepted-jobs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Supplier getting his assigned jobs",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/suppliers/accepted-jobs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"suppliers",
+								"accepted-jobs"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "99"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"63-RUciyl/+Pn8UbLNpklBWyo0iDqI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 29 May 2025 11:24:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"No unassigned jobs found\",\n    \"messageSv\": \"Inga otilldelade jobb hittades\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Driver initiating a chat with the supplier",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJQZWx1bWkgQWRleWVtbyIsImVtYWlsIjoieGNsdXNpdmV0dm5nQGdtYWlsLmNvbSIsInBob25lX251bWJlciI6IjA5MDUxNzUwNDM4Iiwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc0ODUxODEwMCwiZXhwIjoxNzQ5MTIyOTAwfQ.-tQx4vwJIFlPCisYHdMMVcpvcz8sqrKGHjFXy1dik-0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"recipient_type\": \"supplier\",\r\n    \"recipient_id\": \"2\",\r\n    \"reason\": \"Blockage in the road\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/conversation/initiate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"conversation",
+						"initiate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Driver initiating a chat with the supplier",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipient_type\": \"supplier\",\r\n    \"recipient_id\": \"2\",\r\n    \"reason\": \"Blockage in the road\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/conversation/initiate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"conversation",
+								"initiate"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"65-nogua48FZfXQiY54Y5hYjEscrmQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 29 May 2025 11:30:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Chat initiated successfully\",\n    \"messageSv\": \"Chatten initierad framgångsrikt\",\n    \"chat_id\": 23\n}"
+				}
+			]
+		},
+		{
+			"name": "Driver sending a message in the chat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJQZWx1bWkgQWRleWVtbyIsImVtYWlsIjoieGNsdXNpdmV0dm5nQGdtYWlsLmNvbSIsInBob25lX251bWJlciI6IjA5MDUxNzUwNDM4Iiwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc0ODUxODEwMCwiZXhwIjoxNzQ5MTIyOTAwfQ.-tQx4vwJIFlPCisYHdMMVcpvcz8sqrKGHjFXy1dik-0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "23",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "Hey man, there is a blockage on the road",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/conversation/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"conversation",
+						"message"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Driver sending a message in the chat",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "chat_id",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "Hey man, there is a blockage on the road",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/conversation/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"conversation",
+								"message"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5a-h+wrqBcZjctuvbT3k7VJWhBQGuE\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 29 May 2025 11:34:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Message sent successfully\",\n    \"messageSv\": \"Meddelandet skickades framgångsrikt\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Driver getting messages about the conversation raised",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJQZWx1bWkgQWRleWVtbyIsImVtYWlsIjoieGNsdXNpdmV0dm5nQGdtYWlsLmNvbSIsInBob25lX251bWJlciI6IjA5MDUxNzUwNDM4Iiwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc0ODUxODEwMCwiZXhwIjoxNzQ5MTIyOTAwfQ.-tQx4vwJIFlPCisYHdMMVcpvcz8sqrKGHjFXy1dik-0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "23",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "Hey man, there is a blockage on the road",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/conversation/messages/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"conversation",
+						"messages",
+						"23"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Driver getting messages about the conversation raised",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "chat_id",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "Hey man, there is a blockage on the road",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/conversation/messages/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"conversation",
+								"messages",
+								"23"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "398"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"18e-db3yHx+EbEbzJs719ileiZGcpMg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 29 May 2025 11:35:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Messages fetched successfully\",\n    \"data\": {\n        \"initiator_name\": null,\n        \"recipient_name\": \"Exclusive ways Ltd\",\n        \"messages\": [\n            {\n                \"id\": 26,\n                \"chat_id\": 23,\n                \"sender_type\": \"driver\",\n                \"sender_id\": 1,\n                \"message\": \"Hey man, there is a blockage on the road\",\n                \"image_url\": \"/uploads/unified-chats/25030f2e-982d-440c-8ea6-47b63d959540.jpg\",\n                \"read_status\": \"unread\",\n                \"created_at\": \"2025-05-29T11:34:15.000Z\",\n                \"sender_name\": null\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Driver getting all his conversations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJQZWx1bWkgQWRleWVtbyIsImVtYWlsIjoieGNsdXNpdmV0dm5nQGdtYWlsLmNvbSIsInBob25lX251bWJlciI6IjA5MDUxNzUwNDM4Iiwicm9sZSI6ImRyaXZlciIsImlhdCI6MTc0ODUxODEwMCwiZXhwIjoxNzQ5MTIyOTAwfQ.-tQx4vwJIFlPCisYHdMMVcpvcz8sqrKGHjFXy1dik-0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "23",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "Hey man, there is a blockage on the road",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/conversation/conversations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"conversation",
+						"conversations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Driver getting all his conversations",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "chat_id",
+									"value": "23",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "Hey man, there is a blockage on the road",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1efd1f29-a700-4c60-927d-3ea478e5e51b"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/conversation/conversations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"conversation",
+								"conversations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "658"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"292-eCQJf/lQGv8MOm1Qxpnn8Va/1/0\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 29 May 2025 11:36:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Conversations fetched successfully\",\n    \"messageSv\": \"Konversationer hämtade framgångsrikt\",\n    \"data\": [\n        {\n            \"id\": 23,\n            \"initiator_type\": \"driver\",\n            \"initiator_id\": 1,\n            \"recipient_type\": \"supplier\",\n            \"recipient_id\": 2,\n            \"reason\": \"Blockage in the road\",\n            \"priority\": \"normal\",\n            \"status\": \"open\",\n            \"initiator_last_read\": 1,\n            \"recipient_last_read\": 0,\n            \"created_at\": \"2025-05-29T11:30:52.000Z\",\n            \"updated_at\": \"2025-05-29T11:34:15.000Z\",\n            \"other_party_name\": \"Exclusive ways Ltd\",\n            \"initiator_name\": \"Pelumi Adeyemo\",\n            \"recipient_name\": \"Exclusive ways Ltd\",\n            \"unread_count\": 0,\n            \"last_message\": \"Hey man, there is a blockage on the road\",\n            \"last_message_time\": \"2025-05-29T11:34:15.000Z\",\n            \"is_initiator\": true\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}

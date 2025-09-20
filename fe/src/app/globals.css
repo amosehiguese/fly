@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-livvic);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 355 88% 37%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 0 0% 0%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 355 88% 37%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 0 0% 100%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.custom-clamp-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  height: calc(4 * 1.5em);
+  /* Adjust line-height as necessary */
+}
+
+.cs-message-list__scroll-wrapper {
+  padding: 0 0 0 0 !important;
+
+}
+
+.cs-message--outgoing.cs-message--avatar-spacer {
+  margin-right: 10px !important;
+}
+
+.cs-message--incoming.cs-message--avatar-spacer {
+  margin-left: 10px !important;
+}
+
+
+.cs-message__content {
+  background-color: #fff !important;
+
+}
+
+.cs-message--incoming .cs-message__content {
+  background-color: #fff !important;
+  color: #373737 !important;
+  border: 1px solid #c4c4c4;
+}
+
+.cs-message--outgoing .cs-message__content {
+  background-color: #ec1b25 !important;
+  color: white !important;
+}
+
+.cs-chat-container {
+  border-radius: 0.5rem;
+  border: 1px solid #ffffff;
+}
+
+.cs-conversation-header {
+  background-color: #ffffff;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.cs-message-input__content-editor {
+  background-color: #fff !important;
+  border-top: 1px solid !important;
+  border-left: 1px solid !important;
+  border-right: 1px solid !important;
+  border-bottom: 1px solid !important;
+  border-color: #cfcfcf !important;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.cs-message-input__content-editor-wrapper {
+  background-color: #fff !important;
+  border-width: 0 solid #000 !important;
+
+
+}
+
+.cs-message-input__content-editor-container {
+  background-color: #fff !important;
+}
+
+
+.cs-message-input__tools .cs-button--attachment {
+  color: black;
+}
+
+.cs-message-input__tools .cs-button--send {
+  color: #ec1b25 !important;
+  border: 2px solid #ec1b25 !important;
+  border-radius: 100 !important;
+  padding: .4em .6em;
+  margin-right: 8px !important;
+}
+
+.cs-chat-container .cs-message-input {
+  border-top: 0 solid red !important;
+  border-right: 0 solid #d1dbe3 !important;
+  border-bottom: 0 solid #d1dbe3 !important;
+  border-left: 0 solid #d1dbe3 !important;
+  margin-top: auto;
+  padding: .3em 0 .3em 0;
+  color: #000000de;
+  background-color: #fff !important;
+  align-items: center;
+}
+
+.cs-chat-container {
+  background-color: #fff !important;
+}
+
+.cs-conversation-header__back button {
+  color: #000
+}
+
+.chat-container .send-button {
+  background-color: #4caf50;
+  /* Example: Green send button */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-menu-value:hover {
+  text-decoration: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.perspective {
+  perspective: 1000px;
+} 
+
