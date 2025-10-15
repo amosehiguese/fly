@@ -144,20 +144,24 @@ exports.orderDetails = [
   supplierIsLoggedIn,
   async (req, res) => {
     const { orderId } = req.params;
-    const userEmail = req.user.email;
-    const userType = req.user.role; // Assuming 'customer' or 'supplier'
+    const supplierId = req.user.id;
 
     if (!orderId) {
-      return res.status(400).json({ error: "Order ID is required" });
+      return res.status(400).json({ 
+        error: "Order ID is required",
+        errorSv: "Order-ID krävs" 
+      });
     }
 
     try {
-      // Fetch order details
+      // Get bid details with quotation info
       const baseQuery = `
         SELECT 
           b.supplier_id,
           s.company_name AS supplier_name,
           b.order_id,
+          b.quotation_id,
+          b.quotation_type,
           b.created_at AS bid_created_at,
           b.approved_at AS bid_approved_date,
           b.supplier_notes,
@@ -170,16 +174,17 @@ exports.orderDetails = [
           b.additional_services,
           ab.payment_status,
           ab.order_status,
-          ab.delivery_status
+          ab.delivery_status,
+          ab.final_price
         FROM bids b
         JOIN suppliers s ON b.supplier_id = s.id
         JOIN accepted_bids ab ON b.id = ab.bid_id
-        WHERE b.order_id = ?
+        WHERE b.order_id = ? AND b.supplier_id = ?
         LIMIT 1;
       `;
 
       const order = await new Promise((resolve, reject) => {
-        db.query(baseQuery, [orderId], (err, results) => {
+        db.query(baseQuery, [orderId, supplierId], (err, results) => {
           if (err) {
             console.error("Query error:", err);
             return reject(err);
@@ -189,91 +194,45 @@ exports.orderDetails = [
       });
 
       if (!order) {
-        return res
-          .status(404)
-          .json({ error: "Order not found or no access permission." });
+        return res.status(404).json({ 
+          error: "Order not found or no access permission.",
+          errorSv: "Order hittades inte eller ingen åtkomstbehörighet." 
+        });
       }
 
-      // Fetch quotation details
-      const quotationQuery = `
-        SELECT 
-          id, service_type, pickup_address, distance, delivery_address, date, latest_date, 
-          name, ssn, email, phone, services, status, 
-          'private_move' AS table_name 
-        FROM private_move 
-        WHERE id = (SELECT quotation_id FROM bids WHERE order_id = 'BID-20250304-939') 
-          AND 'private_move' = (SELECT quotation_type FROM bids WHERE order_id = 'BID-20250304-939')
+      // Validate and fetch quotation data
+      const allowedTypes = [
+        'company_relocation', 'move_out_cleaning', 'storage', 'heavy_lifting',
+        'carrying_assistance', 'junk_removal', 'estate_clearance', 'evacuation_move',
+        'private_move', 'secrecy_move'
+      ];
 
-        UNION ALL
+      if (!allowedTypes.includes(order.quotation_type)) {
+        return res.status(400).json({ 
+          error: "Invalid quotation type",
+          errorSv: "Ogiltig offerttyp" 
+        });
+      }
 
-        SELECT 
-          id, service_type, pickup_address, distance, delivery_address, date, latest_date, 
-          name, ssn, email, phone, services, status, 
-          'moving_cleaning' AS table_name 
-        FROM moving_cleaning 
-        WHERE id = (SELECT quotation_id FROM bids WHERE order_id = 'BID-20250304-939') 
-          AND 'moving_cleaning' = (SELECT quotation_type FROM bids WHERE order_id = 'BID-20250304-939')
+      // Handle moving_service special case
+      let quotationQuery;
+      let quotationParams;
 
-        UNION ALL
-
-        SELECT 
-          id, service_type, pickup_address, distance, delivery_address, date, latest_date, 
-          name, ssn, email, phone, services, status, 
-          'heavy_lifting' AS table_name 
-        FROM heavy_lifting 
-        WHERE id = (SELECT quotation_id FROM bids WHERE order_id = 'BID-20250304-939') 
-          AND 'heavy_lifting' = (SELECT quotation_type FROM bids WHERE order_id = 'BID-20250304-939')
-
-        UNION ALL
-
-        SELECT 
-          id, service_type, pickup_address, distance, delivery_address, date, latest_date, 
-          name, ssn, email, phone, services, status, 
-          'company_relocation' AS table_name 
-        FROM company_relocation 
-        WHERE id = (SELECT quotation_id FROM bids WHERE order_id = 'BID-20250304-939') 
-          AND 'company_relocation' = (SELECT quotation_type FROM bids WHERE order_id = 'BID-20250304-939')
-
-        UNION ALL
-
-        SELECT 
-          id, service_type, pickup_address, distance, delivery_address, date, latest_date, 
-          name, ssn, email, phone, services, status, 
-          'estate_clearance' AS table_name 
-        FROM estate_clearance 
-        WHERE id = (SELECT quotation_id FROM bids WHERE order_id = 'BID-20250304-939') 
-          AND 'estate_clearance' = (SELECT quotation_type FROM bids WHERE order_id = 'BID-20250304-939')
-
-        UNION ALL
-
-        SELECT 
-          id, service_type, pickup_address, distance, delivery_address, date, latest_date, 
-          name, ssn, email, phone, services, status, 
-          'evacuation_move' AS table_name 
-        FROM evacuation_move 
-        WHERE id = (SELECT quotation_id FROM bids WHERE order_id = 'BID-20250304-939') 
-          AND 'evacuation_move' = (SELECT quotation_type FROM bids WHERE order_id = 'BID-20250304-939')
-
-        UNION ALL
-
-        SELECT 
-          id, service_type, pickup_address, distance, delivery_address, date, latest_date, 
-          name, ssn, email, phone, services, status, 
-          'secrecy_move' AS table_name 
-        FROM secrecy_move 
-        WHERE id = (SELECT quotation_id FROM bids WHERE order_id = 'BID-20250304-939') 
-          AND 'secrecy_move' = (SELECT quotation_type FROM bids WHERE order_id = 'BID-20250304-939')
-
-        LIMIT 1;
-
-      `;
-
-      const queryParams = Array(14).fill(orderId); // Fill placeholders for all queries
+      if (['local_move', 'long_distance_move', 'moving_abroad'].includes(order.quotation_type)) {
+        quotationQuery = `
+          SELECT * FROM moving_service 
+          WHERE id = ? AND JSON_CONTAINS(type_of_service, ?, '$')
+        `;
+        quotationParams = [order.quotation_id, `"${order.quotation_type}"`];
+      } else {
+        quotationQuery = `SELECT * FROM ${order.quotation_type} WHERE id = ?`;
+        quotationParams = [order.quotation_id];
+      }
 
       const quotation = await new Promise((resolve, reject) => {
-        db.query(quotationQuery, queryParams, (err, results) => {
+        db.query(quotationQuery, quotationParams, (err, results) => {
           if (err) {
-            console.error("Query error:", err);
+            console.error("Quotation query error:", err);
             return reject(err);
           }
           resolve(results.length ? results[0] : null);
@@ -281,7 +240,10 @@ exports.orderDetails = [
       });
 
       if (!quotation) {
-        return res.status(404).json({ error: "Quotation details not found." });
+        return res.status(404).json({ 
+          error: "Quotation details not found.",
+          errorSv: "Offertdetaljer hittades inte." 
+        });
       }
 
       // Fetch customer ID using email from the quotation
@@ -297,37 +259,69 @@ exports.orderDetails = [
         });
       });
 
+      // STEP 3: Format response with enhanced data
       res.status(200).json({
+        success: true,
         message: "Order details fetched successfully",
-        messageSv: "Order detaljer hämtades framgångsrikt",
+        messageSv: "Orderdetaljer hämtades framgångsrikt",
         data: {
-          ...order,
-          ...quotation, // Merge quotation details
-          customer_id: customer.id, // Add customer ID
-          bid_created_at: order.bid_created_at
-            ? new Date(order.bid_created_at).toISOString()
-            : null,
-          bid_approved_date: order.bid_approved_date
-            ? new Date(order.bid_approved_date).toISOString()
-            : null,
-          estimated_pickup_date_from: order.estimated_pickup_date_from
-            ? new Date(order.estimated_pickup_date_from).toISOString()
-            : null,
-          estimated_delivery_date_from: order.estimated_delivery_date_from
-            ? new Date(order.estimated_delivery_date_from).toISOString()
-            : null,
-          estimated_pickup_date_to: order.estimated_pickup_date_to
-            ? new Date(order.estimated_pickup_date_to).toISOString()
-            : null,
-          estimated_delivery_date_to: order.estimated_delivery_date_to
-            ? new Date(order.estimated_delivery_date_to).toISOString()
-            : null,
-        },
+          // Order/Bid Information
+          supplier_id: order.supplier_id,
+          supplier_name: order.supplier_name,
+          order_id: order.order_id,
+          quotation_id: order.quotation_id,
+          customer_id: customer.id,
+          quotation_type: order.quotation_type, 
+          bid_created_at: order.bid_created_at ? new Date(order.bid_created_at).toISOString() : null,
+          bid_approved_date: order.bid_approved_date ? new Date(order.bid_approved_date).toISOString() : null,
+          supplier_notes: order.supplier_notes,
+          moving_cost: order.moving_cost,
+          truck_cost: order.truck_cost,
+          additional_services: order.additional_services,
+          payment_status: order.payment_status,
+          order_status: order.order_status,
+          delivery_status: order.delivery_status,
+          final_price: order.final_price,
+          estimated_pickup_date_from: order.estimated_pickup_date_from ? new Date(order.estimated_pickup_date_from).toISOString() : null,
+          estimated_delivery_date_from: order.estimated_delivery_date_from ? new Date(order.estimated_delivery_date_from).toISOString() : null,
+          estimated_pickup_date_to: order.estimated_pickup_date_to ? new Date(order.estimated_pickup_date_to).toISOString() : null,
+          estimated_delivery_date_to: order.estimated_delivery_date_to ? new Date(order.estimated_delivery_date_to).toISOString() : null,
+          
+          // Basic Quotation Information 
+          pickup_address: quotation.pickup_address,
+          delivery_address: quotation.delivery_address,
+          distance: quotation.distance,
+          date: quotation.date ? new Date(quotation.date).toISOString() : null,
+          latest_date: quotation.latest_date ? new Date(quotation.latest_date).toISOString() : null,
+          email: quotation.email,
+          phone: quotation.phone,
+          services: quotation.services,
+          
+          // COMPUTED FIELDS
+          customer_name: quotation.company_name || 
+                        (quotation.first_name && quotation.last_name ? 
+                         `${quotation.first_name} ${quotation.last_name}` : 
+                         quotation.name || 'N/A'),
+          total_cost: (parseFloat(order.moving_cost || 0) + 
+                      parseFloat(order.truck_cost || 0) + 
+                      parseFloat(order.additional_services || 0)).toString(),
+          services_parsed: (() => {
+            try {
+              let parsed = JSON.parse(quotation.services || '[]');
+              if (typeof parsed === 'string') parsed = JSON.parse(parsed);
+              return Array.isArray(parsed) ? parsed : [];
+            } catch {
+              return [];
+            }
+          })()
+        }
       });
     } catch (error) {
       console.error("Error fetching order details:", error);
       res.status(500).json({
+        success: false,
         error: "Internal Server Error: Unable to fetch order details",
+        errorSv: "Internt serverfel: Det går inte att hämta orderdetaljer"
       });
     }
   },
@@ -338,20 +332,44 @@ exports.orderDetailsDetailed = [
   supplierIsLoggedIn,
   async (req, res) => {
     const { orderId } = req.params;
-    const supplierId = req.user.id; // Get supplier ID from authenticated user
+    const supplierId = req.user.id;
 
     if (!orderId) {
-      return res.status(400).json({ error: "Order ID is required" });
+      return res.status(400).json({ 
+        error: "Order ID is required",
+        errorSv: "Order-ID krävs" 
+      });
     }
 
     try {
-      // Step 1: Verify that the supplier owns the bid
+      // Get bid details with order information
       const bidQuery = `
-          SELECT b.quotation_id, b.quotation_type
-          FROM bids b
-          WHERE b.order_id = ? AND b.supplier_id = ?
-          LIMIT 1;
-        `;
+        SELECT 
+          b.quotation_id, 
+          b.quotation_type,
+          b.order_id,
+          b.supplier_id,
+          s.company_name AS supplier_name,
+          b.created_at AS bid_created_at,
+          b.approved_at AS bid_approved_date,
+          b.supplier_notes,
+          b.moving_cost,
+          b.truck_cost,
+          b.additional_services,
+          ab.payment_status,
+          ab.order_status,
+          ab.delivery_status,
+          ab.final_price,
+          b.estimated_pickup_date_from,
+          b.estimated_delivery_date_from,
+          b.estimated_pickup_date_to,
+          b.estimated_delivery_date_to
+        FROM bids b
+        JOIN suppliers s ON b.supplier_id = s.id
+        JOIN accepted_bids ab ON b.id = ab.bid_id
+        WHERE b.order_id = ? AND b.supplier_id = ?
+        LIMIT 1;
+      `;
 
       const bidDetails = await new Promise((resolve, reject) => {
         db.query(bidQuery, [orderId, supplierId], (err, results) => {
@@ -364,22 +382,43 @@ exports.orderDetailsDetailed = [
       });
 
       if (!bidDetails) {
-        return res
-          .status(403)
-          .json({ error: "Access denied. You do not own this bid." });
+        return res.status(403).json({ 
+          error: "Access denied. You do not own this bid.",
+          errorSv: "Åtkomst nekad. Du äger inte detta bud." 
+        });
       }
 
-      const { quotation_id, quotation_type } = bidDetails;
+      // Validate quotation_type
+      const allowedTypes = [
+        'company_relocation', 'move_out_cleaning', 'storage', 'heavy_lifting',
+        'carrying_assistance', 'junk_removal', 'estate_clearance', 'evacuation_move',
+        'private_move', 'secrecy_move'
+      ];
 
-      // Step 2: Fetch full quotation details from the correct table
-      const quotationQuery = `
-          SELECT *
-          FROM ${quotation_type}
-          WHERE id = ?;
+      if (!allowedTypes.includes(bidDetails.quotation_type)) {
+        return res.status(400).json({ 
+          error: "Invalid quotation type",
+          errorSv: "Ogiltig offerttyp" 
+        });
+      }
+
+      // Fetch quotation details
+      let quotationQuery;
+      let quotationParams;
+
+      if (['local_move', 'long_distance_move', 'moving_abroad'].includes(bidDetails.quotation_type)) {
+        quotationQuery = `
+          SELECT * FROM moving_service 
+          WHERE id = ? AND JSON_CONTAINS(type_of_service, ?, '$')
         `;
+        quotationParams = [bidDetails.quotation_id, `"${bidDetails.quotation_type}"`];
+      } else {
+        quotationQuery = `SELECT * FROM ${bidDetails.quotation_type} WHERE id = ?`;
+        quotationParams = [bidDetails.quotation_id];
+      }
 
       const quotation = await new Promise((resolve, reject) => {
-        db.query(quotationQuery, [quotation_id], (err, results) => {
+        db.query(quotationQuery, quotationParams, (err, results) => {
           if (err) {
             console.error("Query error:", err);
             return reject(err);
@@ -389,21 +428,73 @@ exports.orderDetailsDetailed = [
       });
 
       if (!quotation) {
-        return res.status(404).json({ error: "Quotation details not found." });
+        return res.status(404).json({ 
+          error: "Quotation details not found.",
+          errorSv: "Offertdetaljer hittades inte." 
+        });
       }
 
+      // Return combined data 
       res.status(200).json({
+        success: true,
         message: "Order and quotation details fetched successfully",
-        messageSv: "Order och offert detaljer hämtades framgångsrikt",
+        messageSv: "Order- och offertdetaljer hämtades framgångsrikt",
         data: {
-          quotation,
-        },
+          // Order/Bid Data
+          order: {
+            order_id: bidDetails.order_id,
+            supplier_id: bidDetails.supplier_id,
+            supplier_name: bidDetails.supplier_name,
+            quotation_type: bidDetails.quotation_type,
+            bid_created_at: bidDetails.bid_created_at ? new Date(bidDetails.bid_created_at).toISOString() : null,
+            bid_approved_date: bidDetails.bid_approved_date ? new Date(bidDetails.bid_approved_date).toISOString() : null,
+            supplier_notes: bidDetails.supplier_notes,
+            moving_cost: bidDetails.moving_cost,
+            truck_cost: bidDetails.truck_cost,
+            additional_services: bidDetails.additional_services,
+            payment_status: bidDetails.payment_status,
+            order_status: bidDetails.order_status,
+            delivery_status: bidDetails.delivery_status,
+            final_price: bidDetails.final_price,
+            estimated_pickup_date_from: bidDetails.estimated_pickup_date_from ? new Date(bidDetails.estimated_pickup_date_from).toISOString() : null,
+            estimated_delivery_date_from: bidDetails.estimated_delivery_date_from ? new Date(bidDetails.estimated_delivery_date_from).toISOString() : null,
+            estimated_pickup_date_to: bidDetails.estimated_pickup_date_to ? new Date(bidDetails.estimated_pickup_date_to).toISOString() : null,
+            estimated_delivery_date_to: bidDetails.estimated_delivery_date_to ? new Date(bidDetails.estimated_delivery_date_to).toISOString() : null,
+          },
+          
+          // Quotation Data
+          quotation: {
+            ...quotation,
+            quotation_type: bidDetails.quotation_type,
+            date: quotation.date ? new Date(quotation.date).toISOString() : null,
+            latest_date: quotation.latest_date ? new Date(quotation.latest_date).toISOString() : null,
+            created_at: quotation.created_at ? new Date(quotation.created_at).toISOString() : null,
+            
+            // COMPUTED FIELDS
+            customer_name: quotation.company_name || 
+                          (quotation.first_name && quotation.last_name ? 
+                           `${quotation.first_name} ${quotation.last_name}` : 
+                           quotation.name || 'N/A'),
+            services_parsed: (() => {
+              try {
+                let parsed = JSON.parse(quotation.services || '[]');
+                if (typeof parsed === 'string') parsed = JSON.parse(parsed);
+                return Array.isArray(parsed) ? parsed : [];
+              } catch {
+                return [];
+              }
+            })()
+          }
+        }
       });
     } catch (error) {
       console.error("Error fetching order details:", error);
       res.status(500).json({
+        success: false,
         error: "Internal Server Error: Unable to fetch order details",
+        errorSv: "Internt serverfel: Det går inte att hämta orderdetaljer"
       });
     }
   },
 ];
+
